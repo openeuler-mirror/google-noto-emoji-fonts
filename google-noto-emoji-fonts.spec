@@ -1,6 +1,6 @@
 Name:               google-noto-emoji-fonts
 Version:            20180814
-Release:            2
+Release:            3
 Summary:            Color and Black-and-White noto emoji fonts
 
 License:            OFL and ASL 2.0
@@ -40,30 +40,30 @@ This package includes color and Black-and-White noto emoji fonts, and tools for 
 rm -rf third_party/pngquant
 
 %build
-export LANG=C.UTF-8
-%make_build OPT_CFLAGS="$RPM_OPT_FLAGS"
 
 %install
-mkdir -p %{buildroot}%{_fontdir}
-chmod 755 %{buildroot}%{_fontdir}
-
-cp NotoColorEmoji.ttf %{buildroot}%{_fontdir}
-chmod 644 %{buildroot}%{_fontdir}/NotoColorEmoji.ttf
-touch %{buildroot}%{_fontdir}/NotoColorEmoji.ttf
-
-cp fonts/NotoEmoji-Regular.ttf %{buildroot}%{_fontdir}
-chmod 644 %{buildroot}%{_fontdir}/NotoEmoji-Regular.ttf
-touch %{buildroot}%{_fontdir}/NotoEmoji-Regular.ttf
-
+install -m 0755 -d %{buildroot}/usr/share/fonts/google-noto-emoji
+install -m 0644 -p fonts/NotoColorEmoji.ttf %{buildroot}/usr/share/fonts/google-noto-emoji
+install -m 0644 -p fonts/NotoEmoji-Regular.ttf %{buildroot}/usr/share/fonts/google-noto-emoji
 mkdir -p %{buildroot}%{_datadir}/appdata
-cp %{SOURCE1} %{buildroot}%{_datadir}/appdata
-chmod 644 %{buildroot}%{_datadir}/appdata/google-noto-emoji.metainfo.xml
-touch %{buildroot}%{_datadir}/appdata/google-noto-emoji.metainfo.xml
+install -m 0644 -p %{SOURCE1} %{buildroot}%{_datadir}/appdata
+install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/appdata
 
-cp %{SOURCE2} %{buildroot}%{_datadir}/appdata
-chmod 644 %{buildroot}%{_datadir}/appdata/google-noto-emoji-color.metainfo.xml
-touch %{buildroot}%{_datadir}/appdata/google-noto-emoji-color.metainfo.xml
+%files
+%defattr(-,root,root)
+%doc AUTHORS CONTRIBUTING.md CONTRIBUTORS README.md
+%license LICENSE
+%{_datadir}/fonts/google-noto-emoji/*.ttf
+%{_datadir}/appdata/google-noto-emoji*.xml
+
+
 
 %changelog
-* Thu Sep 19 2019 dongjian <dongjian13@huawei.com> - 20180814-2
+* Fri Nov 22 2019 openEuler Buildteam <buildteam@openeuler.org> - 20180814-3
+- Type:bugfix
+- Id:NA
+- SUG:NA
+- DESC:close build
+
+* Thu Sep 19 2019 openEuler Buildteam <buildteam@openeuler.org> - 20180814-2
 - Package init
