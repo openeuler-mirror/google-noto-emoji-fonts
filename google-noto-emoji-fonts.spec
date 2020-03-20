@@ -1,6 +1,6 @@
 Name:               google-noto-emoji-fonts
 Version:            20180814
-Release:            3
+Release:            4
 Summary:            Color and Black-and-White noto emoji fonts
 
 License:            OFL and ASL 2.0
@@ -17,7 +17,7 @@ Patch3:             noto-emoji-python2.patch
 BuildArch:          noarch
 
 BuildRequires:      fontpackages-devel fonttools python2-fonttools nototools python2-devel
-BuildRequires:      GraphicsMagick pngquant zopfli cairo-devel python2-nototools
+BuildRequires:      GraphicsMagick pngquant zopfli cairo-devel python2-nototools gdb
 
 Requires:           fontpackages-filesystem
 
@@ -56,9 +56,10 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/appdata
 %{_datadir}/fonts/google-noto-emoji/*.ttf
 %{_datadir}/appdata/google-noto-emoji*.xml
 
-
-
 %changelog
+* Fri Mar 20 2020 songnannan <songnannan2@huawei.com> - 20180814-4
+- add gdb in buildrequires
+
 * Fri Nov 22 2019 openEuler Buildteam <buildteam@openeuler.org> - 20180814-3
 - Type:bugfix
 - Id:NA
