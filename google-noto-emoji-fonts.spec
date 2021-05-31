@@ -2,7 +2,7 @@
  
 Name:           %{fontname}-fonts
 Version:        20200916
-Release:        1
+Release:        2
 Summary:        Color and Black-and-White noto emoji fonts
  
 License:        OFL and ASL 2.0
@@ -17,6 +17,7 @@ Patch2:         noto-emoji-use-system-pngquant.patch
  
 BuildArch:          noarch
 
+BuildRequires:      gcc
 BuildRequires:      fontpackages-devel fonttools python3-fonttools nototools python3-devel
 BuildRequires:      GraphicsMagick pngquant zopfli cairo-devel python3-nototools gdb
  
@@ -63,6 +64,9 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/appdata
 %{_datadir}/appdata/google-noto-emoji*.xml
  
 %changelog
+* Wed May 26 2021 liuyumeng <liuyumeng5@huawei.com> - 20200916-2
+- Add a BuildRequires for gcc
+
 * Thu Oct 29 2020 jinzhimin <jinzhimin2@huawei.com> - 20200916-1
 - update to 20200916
 
