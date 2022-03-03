@@ -2,7 +2,7 @@
  
 Name:           %{fontname}-fonts
 Version:        20200916
-Release:        3
+Release:        4
 Summary:        Color and Black-and-White noto emoji fonts
  
 License:        OFL and ASL 2.0
@@ -14,6 +14,7 @@ Source2:        %{fontname}-color.metainfo.xml
 Patch0:         noto-emoji-build-all-flags.patch
 Patch1:         noto-emoji-use-gm.patch
 Patch2:         noto-emoji-use-system-pngquant.patch 
+Patch3:         add-verbosity.patch
  
 BuildArch:          noarch
 
@@ -64,6 +65,9 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/appdata
 %{_datadir}/appdata/google-noto-emoji*.xml
  
 %changelog
+* Tue Mar 02 2022 misaka00251 <misaka00251@misakanet.cn> - 20200916-4
+- Add verbosity to keep active in building on RISC-V
+
 * Tue Jul 20 2021 yushaogui <yushaogui@huawei.com> - 20200916-3
 - Delete a BuildRequires for gdb
 

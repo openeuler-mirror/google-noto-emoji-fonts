@@ -1,0 +1,11 @@
+--- a/Makefile	2020-09-17 04:24:02.000000000 +0800
++++ b/Makefile	2022-03-02 21:52:55.357207361 +0800
+@@ -188,7 +188,7 @@
+ 	@($(PNGQUANT) $(PNGQUANTFLAGS) -o "$@" "$<"; case "$$?" in "98"|"99") echo "reuse $<";cp $< $@;; *) exit "$$?";; esac)
+ 
+ $(COMPRESSED_DIR)/%.png: $(QUANTIZED_DIR)/%.png | check_tools $(COMPRESSED_DIR)
+-	@$(ZOPFLIPNG) -y "$<" "$@" 1> /dev/null 2>&1
++	@$(ZOPFLIPNG) -y "$<" "$@" 2>&1
+ 
+ # Make 3.81 can endless loop here if the target is missing but no
+ # prerequisite is updated and make has been invoked with -j, e.g.:
